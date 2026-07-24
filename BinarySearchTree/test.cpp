@@ -13,8 +13,6 @@ int main()
 	t.erase(10);
 	t.erase(1);
 	t.InOrder();
-	key::BSTree<int> t1=t;
-	t1.InOrder();
 
 	return 0;
 }

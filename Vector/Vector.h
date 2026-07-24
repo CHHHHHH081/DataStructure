@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include <vector>
 #include <algorithm>
 #include <assert.h>
@@ -8,7 +8,7 @@ namespace bit
     class vector
     {
     public:
-        // Vectorçš„è¿­ä»£å™¨æ˜¯ä¸€ä¸ªåŸç”ŸæŒ‡é’ˆ
+        // VectorµÄµü´úÆ÷ÊÇÒ»¸öÔ­ÉúÖ¸Õë
         typedef T* iterator;
         typedef const T* const_iterator;
         iterator begin() { return _start; }
@@ -38,7 +38,7 @@ namespace bit
             assert(last - first > 0);
             size_t Oldstorage = _endOfStorage - _start;
             iterator tmp = new T[last - first];
-            for (int n = 0; n < last - first; n++)
+            for (int n=0;n<last-first;n++)
             {
                 *(tmp + n) = *(first + n);
             }
@@ -60,7 +60,7 @@ namespace bit
             _finish = nullptr;
             _endOfStorage = nullptr;
         }
-        // capacity
+            // capacity
         size_t size() const { return _finish - _start; }
         size_t capacity() const { return _endOfStorage - _start; }
         void reserve(size_t n)
@@ -68,18 +68,18 @@ namespace bit
             if (n > _endOfStorage - _start) _endOfStorage = _start + n;
         }
         void resize(size_t n, const T& value = T());
-        ///////////////access///////////////////////////////
-        T& operator[](size_t pos)
+            ///////////////access///////////////////////////////
+        T& operator[](size_t pos) 
         {
             assert(pos < _finish - _start);
-            return *(_start + pos);
+            return *(_start + pos); 
         }
-        const T& operator[](size_t pos)const
+        const T& operator[](size_t pos)const 
         {
             assert(pos < _finish - _start);
-            return *(_start + pos);
+            return *(_start + pos); 
         }
-        //////////////modify/////////////////////////////
+            //////////////modify/////////////////////////////
         void push_back(const T& x);
         void pop_back()
         {
@@ -101,7 +101,7 @@ namespace bit
                 size_t OldStorage = _finish - _start;
                 _start = tmp;
                 _finish = tmp + OldStorage;
-                _endOfStorage = tmp + 2 * OldStorage
+                _endOfStorage= tmp + 2 * OldStorage
             }
             _finish++;
             for (tmp = _finish; tmp > pos; tmp--)
@@ -112,9 +112,9 @@ namespace bit
         }
         iterator erase(iterator pos);
     private:
-        iterator _start; // æŒ‡å‘æ•°æ®å—çš„å¼€å§‹
-        iterator _finish; // æŒ‡å‘æœ‰æ•ˆæ•°æ®çš„å°¾
-        iterator _endOfStorage; // æŒ‡å‘å­˜å‚¨å®¹é‡çš„å°¾
+        iterator _start; // Ö¸ÏòÊı¾İ¿éµÄ¿ªÊ¼
+        iterator _finish; // Ö¸ÏòÓĞĞ§Êı¾İµÄÎ²
+        iterator _endOfStorage; // Ö¸Ïò´æ´¢ÈİÁ¿µÄÎ²
     };
 
 }

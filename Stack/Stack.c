@@ -1,6 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include "Stack.h"
-//³õÊ¼»¯Õ»
+//åˆå§‹åŒ–æ ˆ
 void STInit(ST* pst)
 {
 	assert(pst);
@@ -8,7 +8,7 @@ void STInit(ST* pst)
 	pst->top = -1;
 	pst->Capacity = 0;
 }
-//Ïú»ÙÕ»
+//é”€æ¯æ ˆ
 void STDestroy(ST* pst)
 {
 	assert(pst);
@@ -17,15 +17,15 @@ void STDestroy(ST* pst)
 	pst->top = -1;
 	pst->Capacity = 0;
 }
-//xÈëÕ»
+//xå…¥æ ˆ
 void STpush(ST* pst, STDatatype x)
 {
 	assert(pst);
-	STDatatype* ptmp=pst->a;
+	STDatatype* ptmp = pst->a;
 	if (pst->top + 1 == pst->Capacity)
 	{
-		pst->Capacity=pst->Capacity == 0 ? 4 : (2 * pst->Capacity);
-		ptmp = (STDatatype*)realloc(ptmp, pst->Capacity*sizeof(STDatatype));
+		pst->Capacity = pst->Capacity == 0 ? 4 : (2 * pst->Capacity);
+		ptmp = (STDatatype*)realloc(ptmp, pst->Capacity * sizeof(STDatatype));
 		if (ptmp)
 		{
 			pst->a = ptmp;
@@ -38,18 +38,18 @@ void STpush(ST* pst, STDatatype x)
 	pst->top++;
 	pst->a[pst->top] = x;
 }
-//³öÕ»
+//å‡ºæ ˆ
 void STpop(ST* pst)
 {
 	assert(pst);
 	assert(pst->top != -1);
 	pst->top--;
 }
-//´òÓ¡Õ»
+//æ‰“å°æ ˆ
 void STPrint(ST* pst)
 {
 	assert(pst);
-	int tmp=pst->top;
+	int tmp = pst->top;
 	while (tmp != -1)
 	{
 		printf("%d ", pst->a[tmp]);
@@ -57,21 +57,21 @@ void STPrint(ST* pst)
 	}
 	printf("\n");
 }
-//»ñÈ¡Õ»¶¥ÔªËØ
+//è·å–æ ˆé¡¶å…ƒç´ 
 STDatatype STTop(ST* pst)
 {
 	assert(pst);
 	return pst->a[pst->top];
 }
-//»ñÈ¡Õ»ÄÚÓĞĞ§ÔªËØ¸öÊı
+//è·å–æ ˆå†…æœ‰æ•ˆå…ƒç´ ä¸ªæ•°
 int STSize(ST* pst)
 {
 	assert(pst);
 	return (pst->top + 1);
 }
-//¼ì²âÕ»ÊÇ·ñÎª¿Õ
+//æ£€æµ‹æ ˆæ˜¯å¦ä¸ºç©º
 bool STEmpty(ST* pst)
 {
 	assert(pst);
-	return pst->top == -1;		//¿ÕµÄ»°·µ»Øtrue£¬·Ç¿ÕµÄ»°·µ»Øfalse
+	return pst->top == -1;		//ç©ºçš„è¯è¿”å›trueï¼Œéç©ºçš„è¯è¿”å›false
 }

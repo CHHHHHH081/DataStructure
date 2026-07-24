@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -14,19 +14,19 @@ typedef struct Queue
 	QNode* ptail;
 	int size;
 }Queue;
-//¶ÓÁĞ³õÊ¼»¯
+//é˜Ÿåˆ—åˆå§‹åŒ–
 void QueueInit(Queue* pq);
-//³ö¶Ó
+//å‡ºé˜Ÿ
 void Queuepop(Queue* pq);
-//Èë¶Ó
+//å…¥é˜Ÿ
 void Queuepush(Queue* pq, QDataType x);
-//»ñÈ¡¶ÓÍ·ÔªËØ
+//è·å–é˜Ÿå¤´å…ƒç´ 
 QDataType QueueFront(Queue* pq);
-//»ñÈ¡¶ÓÎ²ÔªËØ
+//è·å–é˜Ÿå°¾å…ƒç´ 
 QDataType QueueBack(Queue* pq);
-//»ñÈ¡¶ÓÁĞÔªËØ¸öÊı
+//è·å–é˜Ÿåˆ—å…ƒç´ ä¸ªæ•°
 int QueueSize(Queue* pq);
-//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ£¬·Ç¿Õ·µ»Ø0£¬¿Õ·µ»Ø1
+//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©ºï¼Œéç©ºè¿”å›0ï¼Œç©ºè¿”å›1
 int QueueEmpty(Queue* pq);
-//Ïú»Ù¶ÓÁĞ
+//é”€æ¯é˜Ÿåˆ—
 void QueueDestroy(Queue* pq);

@@ -1,3 +1,4 @@
+﻿#pragma once
 #pragma once
 #include <iostream>
 #include <vector>
@@ -8,15 +9,14 @@ template <typename K, typename V>
 struct AVLTreeNode
 {
 	pair<K, V> _kv;
-	AVLTreeNode<K, V> *_left;
-	AVLTreeNode<K, V> *_right;
-	AVLTreeNode<K, V> *_parent;
+	AVLTreeNode<K, V>* _left;
+	AVLTreeNode<K, V>* _right;
+	AVLTreeNode<K, V>* _parent;
 	int _bf;
 
-	AVLTreeNode(const pair<K, V> &kv)
+	AVLTreeNode(const pair<K, V>& kv)
 		: _kv(kv), _left(nullptr), _right(nullptr), _parent(nullptr), _bf(0)
-	{
-	}
+	{}
 };
 
 template <typename K, typename V>
@@ -31,11 +31,11 @@ public:
 	int Size() { return _Size(_root); }
 
 	// 右单旋
-	void RotateR(Node *parent)
+	void RotateR(Node* parent)
 	{
-		Node *subL = parent->_left;
-		Node *subLR = subL->_right;
-		Node *pParent = parent->_parent;
+		Node* subL = parent->_left;
+		Node* subLR = subL->_right;
+		Node* pParent = parent->_parent;
 		parent->_left = subLR;
 		if (subLR)
 		{
@@ -64,11 +64,11 @@ public:
 	}
 
 	// 左单旋
-	void RotateL(Node *parent)
+	void RotateL(Node* parent)
 	{
-		Node *subR = parent->_right;
-		Node *subRL = subR->_left;
-		Node *pParent = parent->_parent;
+		Node* subR = parent->_right;
+		Node* subRL = subR->_left;
+		Node* pParent = parent->_parent;
 		parent->_right = subRL;
 		if (subRL)
 		{
@@ -97,10 +97,10 @@ public:
 	}
 
 	// 左右双旋
-	void RotateLR(Node *parent)
+	void RotateLR(Node* parent)
 	{
-		Node *subL = parent->_left;
-		Node *subLR = subL->_right;
+		Node* subL = parent->_left;
+		Node* subLR = subL->_right;
 		int bf = subLR->_bf;
 		RotateL(subL);
 		RotateR(parent);
@@ -127,10 +127,10 @@ public:
 	}
 
 	// 右左双旋
-	void RotateRL(Node *parent)
+	void RotateRL(Node* parent)
 	{
-		Node *subR = parent->_right;
-		Node *subRL = subR->_left;
+		Node* subR = parent->_right;
+		Node* subRL = subR->_left;
 		int bf = subRL->_bf;
 		RotateR(parent->_right);
 		RotateL(parent);
@@ -158,18 +158,18 @@ public:
 		}
 	}
 
-	pair<bool, Node *> insert(const pair<K, V> &kv)
+	pair<bool, Node*> insert(const pair<K, V>& kv)
 	{
 		if (_root == nullptr)
 		{
 			_root = new Node(kv);
-			return {true, _root};
+			return { true, _root };
 		}
 		else
 		{
 			// 找到位置
-			Node *parent = nullptr;
-			Node *cur = _root;
+			Node* parent = nullptr;
+			Node* cur = _root;
 			while (cur)
 			{
 				if (kv.first > cur->_kv.first)
@@ -184,7 +184,7 @@ public:
 				}
 				else
 				{
-					return {false, nullptr};
+					return { false, nullptr };
 				}
 			}
 			// 已经找到，开始插入
@@ -196,7 +196,7 @@ public:
 			else
 				assert(false);
 			cur->_parent = parent;
-			Node *newnode = cur;
+			Node* newnode = cur;
 			// 更新平衡因子
 			while (parent)
 			{
@@ -230,14 +230,14 @@ public:
 				else
 					assert(false);
 			}
-			return {true, newnode};
+			return { true, newnode };
 		}
 	}
 
-	pair<bool, Node *> find(const K &k)
+	pair<bool, Node*> find(const K& k)
 	{
-		Node *parent = nullptr;
-		Node *cur = _root;
+		Node* parent = nullptr;
+		Node* cur = _root;
 		while (cur)
 		{
 			if (k < cur->_kv.first)
@@ -252,16 +252,16 @@ public:
 			}
 			else
 			{
-				return {true, cur};
+				return { true, cur };
 			}
 		}
-		return {false, nullptr};
+		return { false, nullptr };
 	}
 
 	bool IsBalanceTree() { return _IsBalanceTree(_root); }
 
 private:
-	void Destroy(Node *_root)
+	void Destroy(Node* _root)
 	{
 		if (_root == nullptr)
 			return;
@@ -269,7 +269,7 @@ private:
 		Destroy(_root->_right);
 		delete _root;
 	}
-	void _InOrder(Node *_root)
+	void _InOrder(Node* _root)
 	{
 		if (_root == nullptr)
 			return;
@@ -277,7 +277,7 @@ private:
 		cout << _root->_kv.first << ':' << _root->_kv.second << endl;
 		_InOrder(_root->_right);
 	}
-	int _Height(Node *_root)
+	int _Height(Node* _root)
 	{
 		if (_root == nullptr)
 			return 0;
@@ -285,7 +285,7 @@ private:
 		int Right = _Height(_root->_right);
 		return max(Left, Right) + 1;
 	}
-	int _Size(Node *_root)
+	int _Size(Node* _root)
 	{
 		if (_root == nullptr)
 			return 0;
@@ -293,7 +293,7 @@ private:
 		int Right = _Size(_root->_right);
 		return Left + Right + 1;
 	}
-	bool _IsBalanceTree(Node *_root)
+	bool _IsBalanceTree(Node* _root)
 	{
 		if (_root == nullptr)
 			return true;
@@ -306,5 +306,5 @@ private:
 		return _IsBalanceTree(_root->_left) && _IsBalanceTree(_root->_right);
 	}
 
-	Node *_root;
+	Node* _root;
 };

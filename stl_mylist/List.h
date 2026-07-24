@@ -1,4 +1,8 @@
-#pragma once
+﻿#pragma once
+#include <list>
+#include <iostream>
+#include <initializer_list>
+using namespace std;
 
 namespace zzt
 {
@@ -10,14 +14,14 @@ namespace zzt
 			:_prev(nullptr),
 			_next(nullptr),
 			_data(data)
-		{ }
+		{}
 		ListNode<T>* _prev;
 		ListNode<T>* _next;
 		T _data;
 	};
 
 	//List迭代器类
-	template<class T,class Ref,class Ptr>
+	template<class T, class Ref, class Ptr>
 	struct ListIterator
 	{
 		typedef ListIterator<T, T&, T*> iterator;
@@ -28,7 +32,7 @@ namespace zzt
 
 		ListIterator(Node* pnode = nullptr)
 			:_pnode(pnode)
-		{ }
+		{}
 
 		self& operator=(const self& s) { _pnode = s._pnode; return *this; }
 		Ref operator*() { return _pnode->_data; }
@@ -65,8 +69,8 @@ namespace zzt
 	{
 		typedef ListNode<T> Node;
 	public:
-		typedef ListIterator<T,T&,T*> iterator;
-		typedef const ListIterator<T,const T&,const T*> const_iterator; 
+		typedef ListIterator<T, T&, T*> iterator;
+		typedef const ListIterator<T, const T&, const T*> const_iterator;
 
 		List()
 		{
@@ -134,7 +138,7 @@ namespace zzt
 		const_iterator begin() const { return const_iterator(_head->_next); }
 		const_iterator end() const { return const_iterator(_head); }
 
-		iterator insert(iterator pos,const T& val)
+		iterator insert(iterator pos, const T& val)
 		{
 			Node* node = pos._pnode;
 			Node* newnode = new Node(val);
@@ -174,7 +178,7 @@ namespace zzt
 				it = erase(it);
 			}
 		}
-		bool empty() const { return _size ==0; }
+		bool empty() const { return _size == 0; }
 		T& back() { return _head->_prev->_data; }
 		const T& back() const { return _head->_prev->_data; }
 		T& front() { return _head->_next->_data; }

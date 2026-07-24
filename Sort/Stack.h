@@ -1,4 +1,4 @@
-ï»¿#pragma once
+#pragma once
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
@@ -10,19 +10,19 @@ typedef struct Stack
 	int top;
 	int Capacity;
 }ST;
-//åˆå§‹åŒ–æ ˆ
+//³õÊ¼»¯Õ»
 void STInit(ST* pst);
-//é”€æ¯æ ˆ
+//Ïú»ÙÕ»
 void STDestroy(ST* pst);
-//xå…¥æ ˆ
+//xÈëÕ»
 void STpush(ST* pst, STDatatype x);
-//å‡ºæ ˆ
+//³öÕ»
 void STpop(ST* pst);
-//æ‰“å°æ ˆ
+//´òÓ¡Õ»
 void STPrint(ST* pst);
-//è·å–æ ˆé¡¶å…ƒç´ 
+//»ñÈ¡Õ»¶¥ÔªËØ
 STDatatype STTop(ST* pst);
-//è·å–æ ˆå†…æœ‰æ•ˆå…ƒç´ ä¸ªæ•°
+//»ñÈ¡Õ»ÄÚÓĞĞ§ÔªËØ¸öÊı
 int STSize(ST* pst);
-//æ£€æµ‹æ ˆæ˜¯å¦ä¸ºç©º
+//¼ì²âÕ»ÊÇ·ñÎª¿Õ
 bool STEmpty(ST* pst);

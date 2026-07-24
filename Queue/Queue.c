@@ -1,6 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include "Queue.h"
-//¶ÓÁĞ³õÊ¼»¯
+//é˜Ÿåˆ—åˆå§‹åŒ–
 void QueueInit(Queue* pq)
 {
 	assert(pq);
@@ -8,7 +8,7 @@ void QueueInit(Queue* pq)
 	pq->ptail = NULL;
 	pq->size = 0;
 }
-//³ö¶Ó
+//å‡ºé˜Ÿ
 void Queuepop(Queue* pq)
 {
 	assert(pq);
@@ -26,7 +26,7 @@ void Queuepop(Queue* pq)
 	}
 	pq->size--;
 }
-//Èë¶Ó
+//å…¥é˜Ÿ
 void Queuepush(Queue* pq, QDataType x)
 {
 	assert(pq);
@@ -50,33 +50,33 @@ void Queuepush(Queue* pq, QDataType x)
 	}
 	pq->size++;
 }
-//»ñÈ¡¶ÓÍ·ÔªËØ
+//è·å–é˜Ÿå¤´å…ƒç´ 
 QDataType QueueFront(Queue* pq)
 {
 	assert(pq);
-	assert(pq->size!=0);
+	assert(pq->size != 0);
 	return pq->phead->val;
 }
-//»ñÈ¡¶ÓÎ²ÔªËØ
+//è·å–é˜Ÿå°¾å…ƒç´ 
 QDataType QueueBack(Queue* pq)
 {
 	assert(pq);
 	assert(pq->size != 0);
 	return pq->ptail->val;
 }
-//»ñÈ¡¶ÓÁĞÔªËØ¸öÊı
+//è·å–é˜Ÿåˆ—å…ƒç´ ä¸ªæ•°
 int QueueSize(Queue* pq)
 {
 	assert(pq);
 	return pq->size;
 }
-//ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ£¬·Ç¿Õ·µ»Ø0£¬¿Õ·µ»Ø1
+//åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©ºï¼Œéç©ºè¿”å›0ï¼Œç©ºè¿”å›1
 int QueueEmpty(Queue* pq)
 {
 	assert(pq);
 	return pq->size ? 0 : 1;
 }
-//Ïú»Ù¶ÓÁĞ
+//é”€æ¯é˜Ÿåˆ—
 void QueueDestroy(Queue* pq)
 {
 	assert(pq);

@@ -4,6 +4,7 @@
 using namespace std;
 namespace key
 {
+	//节点类
 	template<typename K>
 	struct BSTNode
 	{
@@ -15,6 +16,7 @@ namespace key
 		{}
 	};
 
+	//树类
 	template<typename K>
 	class BSTree
 	{
@@ -104,6 +106,7 @@ namespace key
 			if (_root == nullptr) return false;
 			Node* parent = _root;
 			Node* cur = _root;
+			//先查找节点
 			while (cur)
 			{
 				if (cur->_key > key)
@@ -118,7 +121,8 @@ namespace key
 				}
 				else
 				{
-					//删除
+					//找到了，执行删除
+					//如果要删的是根节点：parent==cur
 					if (parent == cur)
 					{
 						Node* keynodeparent = cur;
@@ -134,6 +138,7 @@ namespace key
 						delete keynode;
 						return true;
 					}
+					//如果左右都不为空，情况4
 					if (cur->_left && cur->_right)
 					{
 						Node* keynodeparent = cur;
@@ -149,6 +154,7 @@ namespace key
 						delete keynode;
 						
 					}
+					//左右至少有一个为空，情况1,2,3
 					else
 					{
 						if (parent->_left == cur)

@@ -376,8 +376,8 @@ void MergeSortNonR(int* arr, int n)
 //¼ÆÊıÅÅĞò
 void CountSort(int* arr, int n)
 {
-	int min = 1e6;
-	int max = -1e6;
+	int min = arr[0];
+	int max = arr[0];
 	for (int i = 0; i < n; i++)
 	{
 		if (arr[i] < min)

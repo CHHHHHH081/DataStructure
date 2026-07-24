@@ -1,17 +1,16 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include "AVLTree.h"
+﻿#include "AVLTree.h"
 
 void TestAVLTree1()
 {
 	AVLTree<int, int> t;
-	 //常规的测试⽤例
-	//int a[] = { 16, 3, 7, 11, 9, 26, 18, 14, 15 };
-	// 特殊的带有双旋场景的测试⽤例
+	//常规的测试⽤例
+   //int a[] = { 16, 3, 7, 11, 9, 26, 18, 14, 15 };
+   // 特殊的带有双旋场景的测试⽤例
 	int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
 	for (auto e : a)
 	{
 		t.insert({ e, e });
-	} 
+	}
 	t.InOrder();
 	cout << t.IsBalanceTree() << endl;
 }
@@ -31,7 +30,7 @@ void TestAVLTree2()
 	for (auto e : v)
 	{
 		t.insert(make_pair(e, e));
-	} 
+	}
 	size_t end2 = clock();
 	cout << "Insert:" << end2 - begin2 << endl;
 	cout << t.IsBalanceTree() << endl;
